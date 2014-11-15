@@ -20,7 +20,7 @@ A few additional packages will be required for full IPython functionality, i.e.,
 
 To use it, you must install a few homebrew and pip modules.
 
-If you don't have yet done. Install [Homebrew](http://brew.sh/). Full instructions [here](https://github.com/mxcl/homebrew/wiki/Installation).
+If you don't have yet done. Install [Homebrew](http://brew.sh/). Full instructions [here](https://github.com/Homebrew/homebrew/wiki/Installation).
 
 Install Python:
 
@@ -75,7 +75,7 @@ The option ``--pylab=inline`` populate the interactive namespace from numpy and 
 
 **IPythonQt** is a very lightweight widget that largely feels like a terminal, but provides a number of enhancements only possible in a GUI, such as inline figures, proper multiline editing with syntax highlighting, graphical calltips, and much [more](http://ipython.org/ipython-doc/dev/interactive/qtconsole.html).
 
-![IPythonQt](http://ipython.org/ipython-doc/dev/_images/besselj.png)
+![IPythonQt](http://ipython.org/_static/screenshots/ipython-qtconsole-thumb.png)
 
 ### Requirements
 
@@ -158,7 +158,7 @@ It only works on Mountain Lion whether you have a modern OSX you can find a lot 
 
 Open Automator, and create a new Application which it´s named Purge Memory.app. Then implement the elements which show the next figure.
 
-![Purge_Memory](https://dl.dropboxusercontent.com/u/9613752/Screenshot%202014-11-14%2014.47.29.pdf)
+![Purge_Memory](https://dl.dropboxusercontent.com/u/9613752/Screenshot%202014-11-14%2014.47.29.png)
 
 ### Requirements
 
@@ -168,7 +168,7 @@ To display the notification center alert in Mountain Lion. You should install th
 
 **MagicMouse** automatically check and notify the charge of a MagicMouse´s battery.
 
-![](https://dl.dropboxusercontent.com/u/9613752/MagicMouse.png)
+![MagicMouse](https://dl.dropboxusercontent.com/u/9613752/MagicMouse.png)
 
 ### Requirements
 
@@ -203,7 +203,7 @@ tell application "Growl"	-- Make a list of all the notification types 	-- that
 
 Monitoring **CPU** and **Memory RAM** in the wallpaper with GeekTool.
 
-![circle](https://dl.dropboxusercontent.com/u/9613752/Screenshot%202014-11-15%2022.11.21.pdf)
+![circle](https://dl.dropboxusercontent.com/u/9613752/Screenshot%202014-11-15%2022.11.21.png)
 
 ### Instructions
 
