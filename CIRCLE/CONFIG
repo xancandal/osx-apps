@@ -1,0 +1,4 @@
+CPU_THEME	White
+RAM_THEME	White
+CONVERT_PATH	/usr/local/bin/convert 
+COMPOSITE_PATH	/usr/local/bin/composite
