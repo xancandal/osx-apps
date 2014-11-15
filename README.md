@@ -158,7 +158,7 @@ It only works on Mountain Lion whether you have a modern OSX you can find a lot 
 
 Open Automator, and create a new Application which it´s named Purge Memory.app. Then implement the elements which show the next figure.
 
-![Purge_Memory](https://dl.dropboxusercontent.com/u/9613752/Screenshot%202014-11-14%2014.47.29.png)
+![Purge_Memory](https://raw.githubusercontent.com/xancandal/osx-apps/master/Images/Screenshot%202014-11-14%2014.47.29.png)
 
 ### Requirements
 
@@ -168,7 +168,7 @@ To display the notification center alert in Mountain Lion. You should install th
 
 **MagicMouse** automatically check and notify the charge of a MagicMouse´s battery.
 
-![MagicMouse](https://dl.dropboxusercontent.com/u/9613752/MagicMouse.png)
+![MagicMouse](https://raw.githubusercontent.com/xancandal/osx-apps/master/Images/MagicMouse.png)
 
 ### Requirements
 
@@ -203,7 +203,7 @@ tell application "Growl"	-- Make a list of all the notification types 	-- that
 
 Monitoring **CPU** and **Memory RAM** in the wallpaper with GeekTool.
 
-![circle](https://dl.dropboxusercontent.com/u/9613752/Screenshot%202014-11-15%2022.11.21.png)
+![circle](https://raw.githubusercontent.com/xancandal/osx-apps/master/Images/Screenshot%202014-11-15%2022.11.21.png)
 
 ### Instructions
 
