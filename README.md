@@ -196,7 +196,43 @@ _NOTE_: I recommend you to try the Bezel theme on Growl.
 Open AppleScipt Editor, and create a new Application which it´s named ```MagicMouse.app``` with:
 
 ```
-tell application "Growl"	-- Make a list of all the notification types 	-- that this script will ever send:	set the allNotificationsList to ¬		{"Magic Mouse Battery"}		-- Make a list of the notifications 	-- that will be enabled by default.      	-- Those not enabled by default can be enabled later 	-- in the 'Applications' tab of the growl prefpane.	set the enabledNotificationsList to ¬		{"Magic Mouse Battery"}		-- Register our script with growl.	-- You can optionally (as here) set a default icon 	-- for this script's notifications.	register as application ¬		"Magic Mouse Battery" all notifications allNotificationsList ¬		default notifications enabledNotificationsList icon of application path to meend telltry	set BPct to do shell script "ioreg -l | grep \"BatteryPercent\""on error	if BPct contains "}" then		display dialog "Magic Mouse Fully Charged"	else		display dialog "Magic Mouse Not Connected"		return	end ifend tryset tNum to text -2 thru -1 of BPct-- display dialog "Battery Charge at " & tNum & "%"tell application "Growl"	notify with name "Magic Mouse Battery" title "Magic Mouse Charge" description tNum & "% " & "remaining." application name "Magic Mouse Battery"end tell
+tell application "Growl"
+	-- Make a list of all the notification types 
+	-- that this script will ever send:
+	set the allNotificationsList to ¬
+		{"Magic Mouse Battery"}
+	
+	-- Make a list of the notifications 
+	-- that will be enabled by default.      
+	-- Those not enabled by default can be enabled later 
+	-- in the 'Applications' tab of the growl prefpane.
+	set the enabledNotificationsList to ¬
+		{"Magic Mouse Battery"}
+	
+	-- Register our script with growl.
+	-- You can optionally (as here) set a default icon 
+	-- for this script's notifications.
+	register as application ¬
+		"Magic Mouse Battery" all notifications allNotificationsList ¬
+		default notifications enabledNotificationsList icon of application path to me
+end tell
+
+try
+	set BPct to do shell script "ioreg -l | grep \"BatteryPercent\""
+on error
+	if BPct contains "}" then
+		display dialog "Magic Mouse Fully Charged"
+	else
+		display dialog "Magic Mouse Not Connected"
+		return
+	end if
+end try
+set tNum to text -2 thru -1 of BPct
+-- display dialog "Battery Charge at " & tNum & "%"
+
+tell application "Growl"
+	notify with name "Magic Mouse Battery" title "Magic Mouse Charge" description tNum & "% " & "remaining." application name "Magic Mouse Battery"
+end tell
 ```
 
 ## CPU and RAM Monitors
@@ -216,7 +252,7 @@ Monitoring **CPU** and **Memory RAM** in the wallpaper with GeekTool.
 You must install GeekTool (see above) and imageMagick (using [Homebrew](http://brew.sh/)) first.
 
 ```
-brew install imagemagick
+$ brew install imagemagick
 ```
 
 Script base on [CIRCLE](http://www.macosxtips.co.uk/geeklets/collections/circle-6/).
