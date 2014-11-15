@@ -216,7 +216,7 @@ Monitoring **CPU** and **Memory RAM** in the wallpaper with GeekTool.
 You must install GeekTool (see above) and imageMagick (using [Homebrew](http://brew.sh/)) first.
 
 ```
-brew install imagemagick
+$ brew install imagemagick
 ```
 
 Script base on [CIRCLE](http://www.macosxtips.co.uk/geeklets/collections/circle-6/).
