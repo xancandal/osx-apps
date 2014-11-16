@@ -163,20 +163,30 @@ Using purge is simple, type the following at a command prompt: ```purge```
 
 Wait a minute or so for changes to take effect, the process is usually much faster on Macs with SSD drives.
 
-![Purge_Memory](https://raw.githubusercontent.com/xancandal/osx-apps/master/Images/)
+![Purge_Memory](https://raw.githubusercontent.com/xancandal/osx-apps/master/Images/Screenshot%202014-11-16%2022.58.05.png)
 
 ### Requirements
+
+If you don't have yet done. Install [Homebrew Cask](http://brew.sh/). Full instructions [here](https://github.com/caskroom/homebrew-cask).
+
+Install **Growl**:
+
+```
+$ brew cask install growl
+```
 
 Go [here](http://developer.apple.com/downloads) to download and install the standalone Command Line Tools on Mountain Lion.
 
 It only works on Mountain Lion whether you have a modern OSX you can find a lot of options into the App Store.
+
+_NOTE_: I recommend you to try the [Raaarr](http://enthusiastik.com/raaarr/) theme on Growl.
 
 ### To create the OSX Application (Bundle)
 
 Open AppleScipt Editor, and create a new Application which it´s named ```PurgeMemory.app``` with:
 
 ```
-tell application "Growl"	-- Make a list of all the notification types 	-- that this script will ever send:	set the allNotificationsList to ¬		{"Purge Memory"}		-- Make a list of the notifications 	-- that will be enabled by default.      	-- Those not enabled by default can be enabled later 	-- in the 'Applications' tab of the growl prefpane.	set the enabledNotificationsList to ¬		{"Purge Memory"}		-- Register our script with growl.	-- You can optionally (as here) set a default icon 	-- for this script's notifications.	register as application ¬		"Purge Memory" all notifications allNotificationsList ¬		default notifications enabledNotificationsList icon of application "/Volumes/User_Drive/Users/xan/Downloads/PurgeMemory.app"end telltry	set RAMfree1 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"end trytell application "Growl"	notify with name "Purge Memory" title "Memory Cleaning" description RAMfree1 & " of memory free available" application name "Purge Memory"end telltry	set RAMfree1 to do shell script "purge"end trydelay 30try	set RAMfree2 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"end trytell application "Growl"	notify with name "Purge Memory" title "Memory Cleaned" description RAMfree2 & " of memory free available" application name "Purge Memory"end tell
+tell application "Growl"	-- Make a list of all the notification types 	-- that this script will ever send:	set the allNotificationsList to ¬		{"Purge Memory"}		-- Make a list of the notifications 	-- that will be enabled by default.      	-- Those not enabled by default can be enabled later 	-- in the 'Applications' tab of the growl prefpane.	set the enabledNotificationsList to ¬		{"Purge Memory"}		-- Register our script with growl.	-- You can optionally (as here) set a default icon 	-- for this script's notifications.	register as application ¬		"Purge Memory" all notifications allNotificationsList ¬		default notifications enabledNotificationsList icon of application "PurgeMemory.app"end telltry	set RAMfree1 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"end trytell application "Growl"	notify with name "Purge Memory" title "Memory Cleaning" description RAMfree1 & " of memory free available" application name "Purge Memory"end telltry	set RAMfree1 to do shell script "purge"end trydelay 30try	set RAMfree2 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"end trytell application "Growl"	notify with name "Purge Memory" title "Memory Cleaned" description RAMfree2 & " of memory free available" application name "Purge Memory"end tell
 ```
 
 ## MagicMouse
@@ -187,13 +197,10 @@ tell application "Growl"	-- Make a list of all the notification types 	-- that
 
 ### Requirements
 
-If you don't have yet done. Install [Homebrew Cask](http://brew.sh/). Full instructions [here](https://github.com/caskroom/homebrew-cask).
-
-Install **GeekTool** and **Growl**:
+Install **GeekTool** with [Homebrew Cask](http://brew.sh/):
 
 ```
 $ brew cask install geektool
-$ brew cask install growl
 ```
 
 Create a new Shell Geeklet into GeekTool. And edit the command parameter with:
