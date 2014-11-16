@@ -1,0 +1,8 @@
+#!/usr/local/bin/Python
+ 
+import os, sys
+os.chdir(os.getenv("HOME"))
+executable = '/usr/local/bin/ipython'
+arguments = [executable, 'qtconsole', '--pylab=inline']
+os.environ["PYTHONPATH"]=os.getenv("PYTHONPATH", "")
+os.execve(executable, arguments, os.environ)

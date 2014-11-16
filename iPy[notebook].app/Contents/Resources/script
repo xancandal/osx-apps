@@ -1,0 +1,5 @@
+#!/usr/bin/osascript
+
+tell application "Terminal"
+	do script "cd $PY_WORK_DIR && ipython notebook --pylab=inline"
+end tell

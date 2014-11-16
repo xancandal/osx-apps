@@ -131,15 +131,20 @@ If you also want to add an icon, you have to copy an ```icon.icns``` file to the
 <plist version="1.0">
 <dict>
     <key>CFBundleIconFile</key>
-    <string>ipython_icon</string>
+    <string>icon</string>
 </dict>
 </plist>
-At the end your package should look like this:    Contents
-       MacOS
-           IPythonQt
-       Resources
-           icon.icns
-       Info.plist
+```
+
+At the end your package should look like this:
+
+```
+Contents
+	MacOS
+		IPythonQt
+	Resources
+		icon.icns
+	Info.plist
 ```
        
 ## Purge Memory
@@ -152,17 +157,27 @@ If you notice that your computer has become slow - just run RAM Cleaning and aft
 
 The program runs in the background and after clear memory, is automatically closed! If the computer hangs for 1-5 seconds, it is clearing the memory, so don't worry. After it is finished, you can continue to work as you usually would.
 
+The purge command forcibly flushes the disk and memory caches, having an effect similar to when you reboot a Mac. Though some say that purge only offers a placebo effect, it absolutely does work to send system memory from the “Inactive” category back to the freely available RAM, and in situations where you are running low on real memory, it can provide a speed boost.
+
+Using purge is simple, type the following at a command prompt: ```purge```
+
+Wait a minute or so for changes to take effect, the process is usually much faster on Macs with SSD drives.
+
+![Purge_Memory](https://raw.githubusercontent.com/xancandal/osx-apps/master/Images/)
+
+### Requirements
+
+Go [here](http://developer.apple.com/downloads) to download and install the standalone Command Line Tools on Mountain Lion.
+
 It only works on Mountain Lion whether you have a modern OSX you can find a lot of options into the App Store.
 
 ### To create the OSX Application (Bundle)
 
-Open Automator, and create a new Application which it´s named Purge Memory.app. Then implement the elements which show the next figure.
+Open AppleScipt Editor, and create a new Application which it´s named ```PurgeMemory.app``` with:
 
-![Purge_Memory](https://raw.githubusercontent.com/xancandal/osx-apps/master/Images/Screenshot%202014-11-14%2014.47.29.png)
-
-### Requirements
-
-To display the notification center alert in Mountain Lion. You should install the [Display Notification Center Alert](http://www.automatedworkflows.com/files/freeware/DisplayNotificationCenterAlertAction.zip) to display a notification when a workflow is complete.
+```
+tell application "Growl"	-- Make a list of all the notification types 	-- that this script will ever send:	set the allNotificationsList to ¬		{"Purge Memory"}		-- Make a list of the notifications 	-- that will be enabled by default.      	-- Those not enabled by default can be enabled later 	-- in the 'Applications' tab of the growl prefpane.	set the enabledNotificationsList to ¬		{"Purge Memory"}		-- Register our script with growl.	-- You can optionally (as here) set a default icon 	-- for this script's notifications.	register as application ¬		"Purge Memory" all notifications allNotificationsList ¬		default notifications enabledNotificationsList icon of application "/Volumes/User_Drive/Users/xan/Downloads/PurgeMemory.app"end telltry	set RAMfree1 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"end trytell application "Growl"	notify with name "Purge Memory" title "Memory Cleaning" description RAMfree1 & " of memory free available" application name "Purge Memory"end telltry	set RAMfree1 to do shell script "purge"end trydelay 30try	set RAMfree2 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"end trytell application "Growl"	notify with name "Purge Memory" title "Memory Cleaned" description RAMfree2 & " of memory free available" application name "Purge Memory"end tell
+```
 
 ## MagicMouse
 
