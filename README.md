@@ -1,10 +1,10 @@
 # Applications Developed for OSX
 
-Simple OSX applications that lets you do basic tasks like:
+Simple OSX applications that let you do basic tasks like:
 
-- Launch IPython Notebook into the browser. 
+- Launch IPython Notebook in the browser. 
 - IPython with QTconsole.
-- Clean memory RAM into Mountain Lion.
+- Clean memory RAM in Mountain Lion.
 - Automatically check the charge of a Magic Mouse´s battery.
 - Monitoring CPU and memory RAM in the wallpaper with GeekTool.
 
@@ -12,7 +12,7 @@ A few additional packages will be required for full IPython functionality, i.e.,
 
 ## iPy[notebook]
 
-**iPy[notebook]** lauch [IPython Notebook](http://ipython.org/notebook.html) which is a web-based interactive computational environment where you can combine code execution, text, mathematics, plots and rich media into a single document.
+**iPy[notebook]** lauches [IPython Notebook](http://ipython.org/notebook.html) which is a web-based interactive computational environment where you can combine code execution, text, mathematics, plots and rich media into a single document.
 
 ![iPy](http://ipython.org/_static/sloangrant/9_home_fperez_prof_grants_1207-sloan-ipython_proposal_fig_ipython-notebook-specgram.png)
 
@@ -20,7 +20,7 @@ A few additional packages will be required for full IPython functionality, i.e.,
 
 To use it, you must install a few homebrew and pip modules.
 
-If you don't have yet done. Install [Homebrew](http://brew.sh/). Full instructions [here](https://github.com/Homebrew/homebrew/wiki/Installation).
+If you haven´t done it yet. Install [Homebrew](http://brew.sh/). Full instructions [here](https://github.com/Homebrew/homebrew/wiki/Installation).
 
 Install Python:
 
@@ -54,7 +54,7 @@ Once you have nose installed ```pip install nose```, you can run IPython’s tes
 
 ### To create the OSX Application (Bundle)
 
-Open Automator, and create a new Application which it´s named iPy[notebook]. Choose "Run AppleScript" and then enter:
+Open Automator, and create a new Application and name it iPy[notebook]. Choose "Run AppleScript" and then enter:
 
 ```
 on run {input, parameters}
@@ -69,7 +69,7 @@ end run
 
 Where ``$PY_WORK_DIR`` should be the working directory where notebook files are saved for iPy[notebook]. And ``$PY_ENV_DIR`` should be the Python environment path, for example ```export PY_ENV_DIR=/usr/local/bin```
 
-The option ``--pylab=inline`` populate the interactive namespace from numpy and matplotlib, but the option ``--matplotlib=inline`` doesn´t do it.
+The option ``--pylab=inline`` populate the interactive namespace from numpy and matplotlib, but the option ``--matplotlib=inline`` doesn´t.
 
 ## IPythonQt
 
@@ -89,11 +89,11 @@ $ pip install pygments
 $ pop install pyzmq
 ```
 
-Alternative you can try [Python Prompt Toolkit](https://github.com/jonathanslenders/python-prompt-toolkit) is a Library for building powerful interactive command lines in Python. It ships with a nice interactive Python shell (called ptpython) built on top of the library.
+Alternatively you can try [Python Prompt Toolkit](https://github.com/jonathanslenders/python-prompt-toolkit) which is a Library for building powerful interactive command lines in Python. It ships with a nice interactive Python shell (called ptpython) built on top of the library.
 
 ### To create the OSX Application (Bundle)
 
-Create a directory named **IPythonQt.app**. This will create a new bundle which is a special directory that contains application and all the related files. Create the following tree inside the directory:
+Create a directory named **IPythonQt.app**. This will create a new bundle which is a special directory that contains the application and all the related files. Create the following tree inside the directory:
 
 ```
 Contents
@@ -167,7 +167,7 @@ Wait a minute or so for changes to take effect, the process is usually much fast
 
 ### Requirements
 
-If you don't have yet done. Install [Homebrew Cask](http://brew.sh/). Full instructions [here](https://github.com/caskroom/homebrew-cask).
+If you haven´t done it yet. Install [Homebrew Cask](http://brew.sh/). Full instructions [here](https://github.com/caskroom/homebrew-cask).
 
 Install **Growl**:
 
@@ -175,23 +175,64 @@ Install **Growl**:
 $ brew cask install growl
 ```
 
-Go [here](http://developer.apple.com/downloads) to download and install the standalone Command Line Tools on Mountain Lion.
+Go [here](http://developer.apple.com/downloads) to download and install the standalone Command Line Tools in Mountain Lion.
 
-It only works on Mountain Lion whether you have a modern OSX you can find a lot of options into the App Store.
+It only works in Mountain Lion but if you have a modern OSX you can find a lot of options in the App Store.
 
-_NOTE_: I recommend you to try the [Raaarr](http://enthusiastik.com/raaarr/) theme on Growl.
+_NOTE_: I recommend you try the [Raaarr](http://enthusiastik.com/raaarr/) theme on Growl.
 
 ### To create the OSX Application (Bundle)
 
-Open AppleScipt Editor, and create a new Application which it´s named ```PurgeMemory.app``` with:
+Open AppleScript Editor, and create a new Application with the name ```PurgeMemory.app``` with:
 
 ```
-tell application "Growl"	-- Make a list of all the notification types 	-- that this script will ever send:	set the allNotificationsList to ¬		{"Purge Memory"}		-- Make a list of the notifications 	-- that will be enabled by default.      	-- Those not enabled by default can be enabled later 	-- in the 'Applications' tab of the growl prefpane.	set the enabledNotificationsList to ¬		{"Purge Memory"}		-- Register our script with growl.	-- You can optionally (as here) set a default icon 	-- for this script's notifications.	register as application ¬		"Purge Memory" all notifications allNotificationsList ¬		default notifications enabledNotificationsList icon of application "PurgeMemory.app"end telltry	set RAMfree1 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"end trytell application "Growl"	notify with name "Purge Memory" title "Memory Cleaning" description RAMfree1 & " of memory free available" application name "Purge Memory"end telltry	set RAMfree1 to do shell script "purge"end trydelay 30try	set RAMfree2 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"end trytell application "Growl"	notify with name "Purge Memory" title "Memory Cleaned" description RAMfree2 & " of memory free available" application name "Purge Memory"end tell
+tell application "Growl"
+	-- Make a list of all the notification types 
+	-- that this script will ever send:
+	set the allNotificationsList to ¬
+		{"Purge Memory"}
+	
+	-- Make a list of the notifications 
+	-- that will be enabled by default.      
+	-- Those not enabled by default can be enabled later 
+	-- in the 'Applications' tab of the growl prefpane.
+	set the enabledNotificationsList to ¬
+		{"Purge Memory"}
+	
+	-- Register our script with growl.
+	-- You can optionally (as here) set a default icon 
+	-- for this script's notifications.
+	register as application ¬
+		"Purge Memory" all notifications allNotificationsList ¬
+		default notifications enabledNotificationsList icon of application "PurgeMemory.app"
+end tell
+
+try
+	set RAMfree1 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"
+end try
+
+tell application "Growl"
+	notify with name "Purge Memory" title "Memory Cleaning" description RAMfree1 & " of memory free available" application name "Purge Memory"
+end tell
+
+try
+	set RAMfree1 to do shell script "purge"
+end try
+
+delay 30
+
+try
+	set RAMfree2 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"
+end try
+
+tell application "Growl"
+	notify with name "Purge Memory" title "Memory Cleaned" description RAMfree2 & " of memory free available" application name "Purge Memory"
+end tell
 ```
 
 ## MagicMouse
 
-**MagicMouse** automatically check and notify the charge of a MagicMouse´s battery.
+**MagicMouse** automatically check and sends notifications about the charge of a MagicMouse´s battery.
 
 ![MagicMouse](https://raw.githubusercontent.com/xancandal/osx-apps/master/Images/MagicMouse.png)
 
@@ -203,7 +244,7 @@ Install **GeekTool** with [Homebrew Cask](http://brew.sh/):
 $ brew cask install geektool
 ```
 
-Create a new Shell Geeklet into GeekTool. And edit the command parameter with:
+Create a new Shell Geeklet in GeekTool. And edit the command parameter with:
 
 ```
 `osascript /Applications/MagicMouse.app`
@@ -211,11 +252,11 @@ Create a new Shell Geeklet into GeekTool. And edit the command parameter with:
 
 Also edit the ```Refresh every parameter``` with for example ```3,600 s```.
 
-_NOTE_: I recommend you to try the Bezel theme on Growl.
+_NOTE_: I recommend you try the Bezel theme on Growl.
 
 ### To create the OSX Application (Bundle)
 
-Open AppleScipt Editor, and create a new Application which it´s named ```MagicMouse.app``` with:
+Open AppleScript Editor, and create a new Application with the name ```MagicMouse.app``` with:
 
 ```
 tell application "Growl"
@@ -266,8 +307,8 @@ Monitoring **CPU** and **Memory RAM** in the wallpaper with GeekTool.
 ### Instructions
 
 - Copy the folder CIRCLE to ~/Documents
-- Chose Black or White theme editing the file ~/Documents/CIRCLE/CONFIG
-- Open the glet files placed inside the folder.
+- Chose Black or White theme by editing the file ~/Documents/CIRCLE/CONFIG
+- Open the glet file placed inside the folder.
 
 ### Requirements
 
@@ -277,4 +318,4 @@ You must install GeekTool (see above) and imageMagick (using [Homebrew](http://b
 $ brew install imagemagick
 ```
 
-Script base on [CIRCLE](http://www.macosxtips.co.uk/geeklets/collections/circle-6/).
+Script based on [CIRCLE](http://www.macosxtips.co.uk/geeklets/collections/circle-6/).
