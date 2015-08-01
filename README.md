@@ -211,15 +211,9 @@ try
 	set RAMfree1 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"
 end try
 
-tell application "Growl"
-	notify with name "Purge Memory" title "Memory Cleaning" description RAMfree1 & " of memory free available" application name "Purge Memory"
-end tell
-
 try
 	set RAMfree1 to do shell script "purge"
 end try
-
-delay 30
 
 try
 	set RAMfree2 to do shell script "top -l 1 | grep PhysMem: | awk '{print $10}'"
